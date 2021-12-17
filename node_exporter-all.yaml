@@ -86,6 +86,11 @@
         jump: ACCEPT
 #  - name: Check http metrics page
 
+  - name: Confirm that 200 OK response is returned
+    uri:
+        url: "http://{{ inventory_hostname }}:9100/metrics"
+        status_code: 200
+    delegate_to: 127.0.0.1
 
   handlers:
   - name: Restart service daemon-reload
